@@ -3,8 +3,8 @@ package com.example.stockchart
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.example.stockchart.data.SettingsDataStore
-import com.example.stockchart.data.dataStore
+import com.example.stockchart.data.settings.SettingsDataStore
+import com.example.stockchart.data.settings.dataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,4 +23,16 @@ object AppModule {
     fun provideSettingsDataStore(dataStore: DataStore<Preferences>): SettingsDataStore {
         return SettingsDataStore(dataStore)
     }
+
+
+    // Network
+//    @Provides
+//    @Singleton
+//    fun provideMoshiRetrofit(): Retrofit = RetrofitConfig.createMoshiRetrofit()
+//
+//    @Provides
+//    @Singleton
+//    fun provideGsonRetrofit(): Retrofit = RetrofitConfig.createGsonRetrofit()
+
+
 }

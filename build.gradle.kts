@@ -7,5 +7,8 @@ plugins {
 buildscript {
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.47")
+
+        // Ktor kotlinx
+//        classpath("org.jetbrains.kotlin:kotlin-android-extensions:1.9.0")
     }
 }

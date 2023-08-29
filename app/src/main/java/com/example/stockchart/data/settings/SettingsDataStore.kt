@@ -1,4 +1,4 @@
-package com.example.stockchart.data
+package com.example.stockchart.data.settings
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -6,6 +6,8 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.stockchart.IsComposeMode
+import com.example.stockchart.network.RequestMode
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,16 +22,30 @@ class SettingsDataStore @Inject constructor(private val dataStore: DataStore<and
     companion object {
         private val IS_COMPOSE_MODE = booleanPreferencesKey("is_compose_mode")
         private val IS_MOSHI_CONVERTER = booleanPreferencesKey("is_moshi_converter")
+        private val REQUEST_MODE = stringPreferencesKey("request_mode")
     }
 
-    suspend fun getComposeMode(): Boolean {
+    suspend fun getComposeMode(): IsComposeMode {
         val preferences = dataStore.data.first()
-        return preferences[IS_COMPOSE_MODE] ?: false
+        val mode = preferences[IS_COMPOSE_MODE] ?: true
+        return IsComposeMode.getEnumState(mode)
     }
 
     suspend fun saveComposeMode(isComposeMode: Boolean) {
         dataStore.edit { preferences ->
             preferences[IS_COMPOSE_MODE] = isComposeMode
+        }
+    }
+
+    suspend fun getRequestMode(): RequestMode {
+        val preferences = dataStore.data.first()
+        val mode = preferences[REQUEST_MODE]
+        return RequestMode.valueOf(mode ?: RequestMode.GSON_RETROFIT.name)
+    }
+
+    suspend fun saveRequestMode(requestMode: RequestMode) {
+        dataStore.edit { preferences ->
+            preferences[REQUEST_MODE] = requestMode.name
         }
     }
 

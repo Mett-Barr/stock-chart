@@ -1,4 +1,4 @@
-package com.example.stockchart.data
+package com.example.stockchart.data.settings
 
 import android.content.Context
 

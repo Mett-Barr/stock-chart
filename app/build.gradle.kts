@@ -5,6 +5,17 @@ plugins {
     kotlin("kapt")
 
     id("com.google.dagger.hilt.android") //version "2.47" apply false
+
+    // Ktor kotlinx
+//    id("kotlin-android-extensions")
+
+//    kotlin("android.extensions")
+
+    // KS
+//    kotlin("kotlinx-serialization")
+//    id("kotlinx-serialization") // version ("1.3.0")
+//    kotlin("kotlinx-serialization") version "1.3.11"
+//    id("kotlinx-serialization") version "1.3.40"
 }
 
 android {
@@ -89,7 +100,6 @@ dependencies {
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.47")
-//    annotationProcessor("com.google.dagger:hilt-compiler:2.47")
     kapt("com.google.dagger:hilt-android-compiler:2.47")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
 
@@ -97,6 +107,32 @@ dependencies {
     val navVersion = "2.7.1"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    // Moshi
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.0")
+
+    // Gson
+    implementation("com.google.code.gson:gson:2.9.0")
+
+    // Retrofit
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion") // For Moshi converter
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion") // For Gson converter
+
+
+    // Kotlinx-serialization
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // Ktor
+    val ktorVersion = "2.3.3"
+    implementation("io.ktor:ktor-client-android:$ktorVersion")
+    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+
 }
 
 kapt {
