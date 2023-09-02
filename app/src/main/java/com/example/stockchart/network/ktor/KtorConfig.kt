@@ -12,6 +12,7 @@ import kotlinx.serialization.json.Json
 
 object KtorConfig {
     private const val BASE_URL = "https://api.nstock.tw/"
+    private const val RIVER_CHART_URL = "/v2/per-river/interview?stock_id="
 
     private val client = HttpClient(Android) {
         install(ContentNegotiation) {
@@ -23,7 +24,7 @@ object KtorConfig {
     }
 
     suspend fun fetchData(stockId: String): KSData {
-        val response: HttpResponse = client.get("$BASE_URL/v2/per-river/interview?stock_id=$stockId")
+        val response: HttpResponse = client.get("$BASE_URL$RIVER_CHART_URL$stockId")
         return response.body()
     }
 }

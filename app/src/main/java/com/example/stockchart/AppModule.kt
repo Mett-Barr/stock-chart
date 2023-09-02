@@ -23,16 +23,4 @@ object AppModule {
     fun provideSettingsDataStore(dataStore: DataStore<Preferences>): SettingsDataStore {
         return SettingsDataStore(dataStore)
     }
-
-
-    // Network
-//    @Provides
-//    @Singleton
-//    fun provideMoshiRetrofit(): Retrofit = RetrofitConfig.createMoshiRetrofit()
-//
-//    @Provides
-//    @Singleton
-//    fun provideGsonRetrofit(): Retrofit = RetrofitConfig.createGsonRetrofit()
-
-
 }

@@ -19,11 +19,8 @@ class ItemLayout @JvmOverloads constructor(
 
         attrs?.let {
             val typedArray = context.obtainStyledAttributes(it, R.styleable.ItemLayout, 0, 0)
-
             val color = typedArray.getColor(R.styleable.ItemLayout_setColor, Color.TRANSPARENT)
-
             findViewById<View>(R.id.color_block).setBackgroundColor(color)
-
             typedArray.recycle()
         }
 

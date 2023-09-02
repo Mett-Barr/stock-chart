@@ -29,7 +29,6 @@ object StockUseCase {
     }
 
     private fun convertToRiverEntries(data: List<RiverChartCore>): List<RiverEntry> {
-
         if (data.isEmpty()) return emptyList()
 
         val size = data.first().netValueBasedPriceStandard.size
@@ -49,7 +48,6 @@ object StockUseCase {
     }
 
     private fun convertToStockPriceEntries(data: List<RiverChartCore>): List<Entry> {
-
         if (data.isEmpty()) return emptyList()
 
         return data.reversed().mapIndexed { index, it ->

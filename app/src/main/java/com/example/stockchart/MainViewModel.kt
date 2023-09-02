@@ -1,6 +1,5 @@
 package com.example.stockchart
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stockchart.data.settings.SettingsDataStore
@@ -12,7 +11,6 @@ import com.example.stockchart.usecase.StockUseCase
 import com.github.mikephil.charting.data.Entry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -25,7 +23,6 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val settingsDataStore: SettingsDataStore,
 ) : ViewModel() {
-
     private val stockRepository = StockRepository
 
     /** UI State */
@@ -33,8 +30,8 @@ class MainViewModel @Inject constructor(
     val composeModeState: StateFlow<IsComposeMode> = _composeModeState
 
     init {
-        fetchComposeMode()
-        test()
+//        fetchComposeMode()
+        requestStockData()
     }
 
     private fun fetchComposeMode() {
@@ -81,47 +78,20 @@ class MainViewModel @Inject constructor(
     private val _stock = MutableStateFlow<StockDataCore?>(null)
     val stock: StateFlow<StockDataCore?> = _stock
 
-//    private val _uiState = MutableStateFlow(UiState(null))
     val uiState: StateFlow<UiState> = _stock.map { stockData ->
         StockUseCase.getUiState(stockData)
     }.stateIn(viewModelScope, SharingStarted.Lazily, UiState.Loading)
-
-
-//    val riverEntries: StateFlow<List<RiverEntry>> = _stock.map { stockData ->
-//        convertToRiverEntries(stockData?.data?.first()?.riverChartData ?: emptyList())
-//    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
-//
-//    val stockPriceEntries: StateFlow<List<Entry>> = _stock.map { stockData ->
-//        convertToStockPriceEntries(stockData?.data?.first()?.riverChartData ?: emptyList())
-//    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
-//
-//    val oldestDate: StateFlow<String> = _stock.map {
-//        it?.data?.first()?.riverChartData?.last()?.yearMonth ?: ""
-//    }.stateIn(viewModelScope, SharingStarted.Lazily, "")
-//
-//    val dateList: StateFlow<List<String>> = _stock.map { stockDataCore ->
-//        stockDataCore?.data?.first()?.riverChartData?.reversed()?.map {
-//            DateUtil.convertToYearMonthFormat(it.yearMonth)
-//        } ?: listOf()
-//    }.stateIn(viewModelScope, SharingStarted.Lazily, listOf())
 
     private val _selectedPosition = MutableStateFlow<Int?>(null)
     val selectedPosition: StateFlow<Int?> = _selectedPosition
 
     fun onSelect(entry: Entry) {
-        uiState.value.isSuccess {
-            _selectedPosition.value = stockPriceEntries.indexOf(entry)
-            Log.d("!!!", "onSelect: ${stockPriceEntries.indexOf(entry)}")
-        }
+        uiState.value.isSuccess { _selectedPosition.value = stockPriceEntries.indexOf(entry) }
     }
 
-
-    private fun test() {
+    private fun requestStockData() {
         viewModelScope.launch(Dispatchers.IO) {
-            delay(3000)
-            val stock = stockRepository.fetchData(requestMode = RequestMode.KS_KTOR)
-
-            _stock.value = stock
+            _stock.value = stockRepository.fetchData(requestMode = RequestMode.KS_KTOR)
         }
     }
 }

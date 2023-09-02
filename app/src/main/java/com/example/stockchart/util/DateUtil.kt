@@ -1,6 +1,9 @@
 package com.example.stockchart.util
 
 object DateUtil {
+
+    private const val yearMonthFormatWithSlash = "%04d/%02d"
+
     // 將 yyyymm 轉換為相對於最舊日期的 X 值
     fun yearMonthToXValue(currentDate: String, oldestDate: String): Int {
         val currentYear = currentDate.substring(0..3).toInt()
@@ -29,7 +32,7 @@ object DateUtil {
             month -= 12
         }
 
-        return String.format("%04d/%02d", year, month)
+        return String.format(yearMonthFormatWithSlash, year, month)
     }
 
     fun convertToYearMonthFormat(date: String): String {

@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.stockchart.databinding.ActivityMainBinding
-import com.example.stockchart.ui.component.displayRiverCharts
+import com.example.stockchart.ui.component.river_chart.displayRiverCharts
 import com.example.stockchart.ui.component.river_chart.UiState
 import com.example.stockchart.util.DateUtil
 import com.github.mikephil.charting.data.Entry
@@ -53,8 +53,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun initListener() {
-
-        // 強制顯示圖表，遇過一次已經在入資訊卻沒顯示
+        // 強制顯示圖表，遇過一次已經載入資訊卻沒顯示
         //todo viewModel.uiState.collect監聽失效沒有更新顯示
         binding.root.setOnClickListener {
             binding.progressCircular.visibility = View.GONE

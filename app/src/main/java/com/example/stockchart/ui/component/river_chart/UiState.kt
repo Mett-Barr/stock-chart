@@ -11,7 +11,6 @@ sealed class UiState {
         val dateList: List<String>,
         val priceEarningsStandard: List<String>
     ) : UiState() {
-
         fun getStockPrice(index: Int): Int {
             return this.stockPriceEntries[index].y.roundToInt()
         }

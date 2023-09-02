@@ -48,27 +48,4 @@ class SettingsDataStore @Inject constructor(private val dataStore: DataStore<and
             preferences[REQUEST_MODE] = requestMode.name
         }
     }
-
-//    private fun converterTypeSwitch(type: ConverterType): Boolean {
-//        return when (type) {
-//            ConverterType.GSON -> false
-//            ConverterType.MOSHI -> true
-//        }
-//    }
-//    private fun converterTypeSwitch(boolean: Boolean): ConverterType {
-//        return when (boolean) {
-//            true -> ConverterType.MOSHI
-//            false -> ConverterType.GSON
-//        }
-//    }
-//    suspend fun getConverterType(): Boolean {
-//        val preferences = dataStore.data.first()
-//        return preferences[IS_MOSHI_CONVERTER] ?: false
-//    }
-//
-//    suspend fun saveConverterType(isComposeMode: Boolean) {
-//        dataStore.edit { preferences ->
-//            preferences[IS_MOSHI_CONVERTER] = isComposeMode
-//        }
-//    }
 }

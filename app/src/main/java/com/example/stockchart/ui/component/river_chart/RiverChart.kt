@@ -1,10 +1,6 @@
-package com.example.stockchart.ui.component
+package com.example.stockchart.ui.component.river_chart
 
 import com.example.stockchart.R
-import com.example.stockchart.ui.component.river_chart.RiverChartFormatter
-import com.example.stockchart.ui.component.river_chart.RiverChartRenderer
-import com.example.stockchart.ui.component.river_chart.RiverEntry
-import com.example.stockchart.ui.component.river_chart.UiState
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -70,8 +66,6 @@ fun createLineDataFromRiverEntry(riverEntry: RiverEntry, index: Int, riverColor:
         lineWidth = 2.5f
         setDrawValues(false)
         setDrawCircles(false)
-//        valueTextColor = dataSetColor
-//        setDrawHorizontalHighlightIndicator(false)
         isHighlightEnabled = false
     }
 
@@ -80,17 +74,14 @@ fun createLineDataFromRiverEntry(riverEntry: RiverEntry, index: Int, riverColor:
         lineWidth = 2.5f
         setDrawValues(false)
         setDrawCircles(false)
-//        valueTextColor = dataSetColor
+        isHighlightEnabled = false
 
         // Apply the fill formatting directly within this scope
         fillFormatter = RiverChartFormatter(upperDataSet)
         fillColor = riverColor
         fillAlpha = 255
-        setDrawFilled(true)
-//        setDrawHorizontalHighlightIndicator(false)
         isHighlightEnabled = false
     }
-
 
     val dataSets = listOf(upperDataSet, lowerDataSet)
     return LineData(dataSets)
