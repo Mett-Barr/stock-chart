@@ -74,6 +74,7 @@ fun createLineDataFromRiverEntry(riverEntry: RiverEntry, index: Int, riverColor:
         lineWidth = 2.5f
         setDrawValues(false)
         setDrawCircles(false)
+        setDrawFilled(true)
         isHighlightEnabled = false
 
         // Apply the fill formatting directly within this scope

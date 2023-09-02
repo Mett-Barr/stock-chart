@@ -11,6 +11,7 @@ import com.example.stockchart.usecase.StockUseCase
 import com.github.mikephil.charting.data.Entry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -91,6 +92,8 @@ class MainViewModel @Inject constructor(
 
     private fun requestStockData() {
         viewModelScope.launch(Dispatchers.IO) {
+            // 讓圈圈轉一下🤣
+            delay(1500)
             _stock.value = stockRepository.fetchData(requestMode = RequestMode.KS_KTOR)
         }
     }

@@ -26,24 +26,23 @@ class RiverChartRenderer(
             (dataSet.fillFormatter as RiverChartFormatter).getFillLineBoundary() ?: return
 
         val phaseY = mAnimator.phaseY
-        val filled = outputPath
-        filled.reset()
+        outputPath.reset()
 
         val entry = dataSet.getEntryForIndex(startIndex)
-        filled.moveTo(entry.x, boundaryEntry[0].y)
-        filled.lineTo(entry.x, entry.y * phaseY)
+        outputPath.moveTo(entry.x, boundaryEntry[0].y)
+        outputPath.lineTo(entry.x, entry.y * phaseY)
 
         var currentEntry: Entry?
         for (x in startIndex + 1..endIndex) {
             currentEntry = dataSet.getEntryForIndex(x)
-            filled.lineTo(currentEntry.x, currentEntry.y * phaseY)
+            outputPath.lineTo(currentEntry.x, currentEntry.y * phaseY)
         }
 
         for (x in endIndex downTo startIndex) {
             val previousEntry = boundaryEntry[x]
-            filled.lineTo(previousEntry.x, previousEntry.y * phaseY)
+            outputPath.lineTo(previousEntry.x, previousEntry.y * phaseY)
         }
-        filled.close()
+        outputPath.close()
     }
 
     override fun drawLinearFill(
