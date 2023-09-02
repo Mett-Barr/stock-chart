@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,7 +20,6 @@ fun MainNavigation(viewModel: MainViewModel = hiltViewModel()) {
 
     val navController = rememberNavController()
     val routeState by viewModel.composeModeState.collectAsState()
-    val context = LocalContext.current
 
     NavHost(navController, startDestination = routeState.name, modifier = Modifier.fillMaxSize()) {
         composable(IsComposeMode.TRUE.name) {
@@ -30,7 +28,7 @@ fun MainNavigation(viewModel: MainViewModel = hiltViewModel()) {
             }
         }
         composable(IsComposeMode.FALSE.name) {
-            ViewPage(context = context, viewModel = viewModel) {
+            ViewPage(viewModel = viewModel) {
                 viewModel.toggleComposeMode()
             }
         }

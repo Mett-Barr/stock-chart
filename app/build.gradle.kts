@@ -1,4 +1,3 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,16 +5,7 @@ plugins {
 
     id("com.google.dagger.hilt.android") //version "2.47" apply false
 
-    // Ktor kotlinx
-//    id("kotlin-android-extensions")
-
-//    kotlin("android.extensions")
-
-    // KS
-//    kotlin("kotlinx-serialization")
-//    id("kotlinx-serialization") // version ("1.3.0")
-//    kotlin("kotlinx-serialization") version "1.3.11"
-//    id("kotlinx-serialization") version "1.3.40"
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -133,6 +123,8 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
+    // MPChart
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
 
 kapt {

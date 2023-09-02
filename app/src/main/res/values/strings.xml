@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Stock Chart</string>
+
+    <string name="item_string">%.2f倍  %.2f</string>
+    <string name="stock_price_string">股價 %d</string>
+    <string name="item_empty_string"> - </string>
+    <string name="dollar_unit">(元)</string>
 </resources>

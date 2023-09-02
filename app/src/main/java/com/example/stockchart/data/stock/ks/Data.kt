@@ -6,7 +6,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
-//todo
 @Serializable
 data class Data(
     @SerialName("同業本淨比中位數")

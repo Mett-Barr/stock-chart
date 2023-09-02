@@ -6,7 +6,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
-//todo
 @Serializable
 data class RiverChartData(
     @SerialName("平均本淨比")
@@ -26,7 +25,7 @@ data class RiverChartData(
     @SerialName("本益比股價基準")
     override val priceEarningsBasedPriceStandard: List<String>,
     @SerialName("近3年年複合成長")
-    override val recentThreeYearsCompoundGrowth: String,
+    override val recentThreeYearsCompoundGrowth: String?,
     @SerialName("近一季BPS")
     override val recentQuarterBPS: String,
     @SerialName("近四季EPS")

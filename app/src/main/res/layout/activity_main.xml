@@ -1,17 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_dollar_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/dollar_unit"
+        android:textColor="@color/river_chart_text_color"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/chart"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/chart"
+        app:layout_constraintEnd_toEndOf="@+id/chart"
+        app:layout_constraintStart_toStartOf="@+id/chart"
+        app:layout_constraintTop_toTopOf="@+id/chart" />
+
+    <TextView
+        android:id="@+id/year_month"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:textColor="@color/selected_line_color"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/stock_price"
+        app:layout_constraintEnd_toStartOf="@+id/stock_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/stock_price"
+        app:layout_constraintWidth_percent="0.33" />
+
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/stock_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/stock_line_color"
+        app:setText="@string/item_empty_string"
+        app:layout_constraintBottom_toTopOf="@+id/pe_2"
+        app:layout_constraintEnd_toStartOf="@+id/spacer_first_row"
+        app:layout_constraintStart_toEndOf="@+id/year_month"
+        app:layout_constraintWidth_percent="0.33" />
+
+    <View
+        android:id="@+id/spacer_first_row"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/stock_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stock_price"
+        app:layout_constraintTop_toTopOf="@+id/stock_price"
+        app:layout_constraintWidth_percent="0.33" />
+
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/pe_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/river_color_pe_1"
+        app:layout_constraintBottom_toTopOf="@+id/pe_4"
+        app:layout_constraintEnd_toStartOf="@id/pe_2"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/pe_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/river_color_pe_2"
+        app:layout_constraintBottom_toTopOf="@+id/pe_5"
+        app:layout_constraintEnd_toStartOf="@id/pe_3"
+        app:layout_constraintStart_toEndOf="@id/pe_1" />
+
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/pe_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/river_color_pe_3"
+        app:layout_constraintBottom_toTopOf="@+id/pe_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pe_2" />
+
+
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/pe_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/river_color_pe_4"
+        app:layout_constraintBottom_toTopOf="@+id/chart"
+        app:layout_constraintEnd_toStartOf="@id/pe_5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/pe_5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/river_color_pe_5"
+        app:layout_constraintBottom_toTopOf="@+id/chart"
+        app:layout_constraintEnd_toStartOf="@id/pe_6"
+        app:layout_constraintStart_toEndOf="@id/pe_4" />
+    <com.example.stockchart.ui.component.item_layout.ItemLayout
+        android:id="@+id/pe_6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:setColor="@color/river_color_pe_6"
+        app:layout_constraintBottom_toTopOf="@+id/chart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pe_5" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

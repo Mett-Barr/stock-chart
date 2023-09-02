@@ -1,6 +1,5 @@
 package com.example.stockchart.network.retrofit
 
-import android.util.Log
 import com.example.stockchart.data.stock.gson.GsonData
 import com.example.stockchart.data.stock.moshi.MoshiData
 import com.squareup.moshi.Moshi
@@ -43,7 +42,6 @@ object RetrofitConfig {
     private val apiServiceGson: GsonApiService = retrofitGson.create(GsonApiService::class.java)
 
     suspend fun fetchDataMoshi(stockId: String): Response<MoshiData> {
-        Log.d("!!!", "Fetching data with Moshi for stock ID: $stockId")
         return apiServiceMoshi.getPerRiverData(stockId)
     }
 

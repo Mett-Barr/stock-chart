@@ -7,4 +7,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- River Chart Colors from high to low Price to Earnings (P/E) ratio -->
+    <color name="river_color_pe_1">#fe8887</color>
+    <color name="river_color_pe_2">#fdb882</color>
+    <color name="river_color_pe_3">#fedcba</color>
+    <color name="river_color_pe_4">#c8defe</color>
+    <color name="river_color_pe_5">#7299dc</color>
+    <color name="river_color_pe_6">#269597</color>
+    <array name="river_chart_colors_array">
+        <item>@color/river_color_pe_1</item>
+        <item>@color/river_color_pe_2</item>
+        <item>@color/river_color_pe_3</item>
+        <item>@color/river_color_pe_4</item>
+        <item>@color/river_color_pe_5</item>
+        <item>@color/river_color_pe_6</item>
+    </array>
+
+    <color name="stock_line_color">#ff5d5d</color>
+    <color name="background">#111620</color>
+    <color name="river_chart_grid_color">#414550</color>
+    <color name="river_chart_text_color">#9a9fa9</color>
+    <color name="selected_line_color">#fdfefe</color>
 </resources>
